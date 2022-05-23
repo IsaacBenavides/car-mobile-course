@@ -6,25 +6,6 @@ void main() {
   runApp(const MyApp());
 }
 
-class Provider extends InheritedWidget {
-  const Provider({
-    Key? key,
-    required this.changeColor,
-    required this.updateCounter,
-    required Widget child,
-  }) : super(key: key, child: child);
-
-  final ChangeColorBloc changeColor;
-  final UpdateCounterBloc updateCounter;
-
-  static Provider of(BuildContext context) {
-    return context.findAncestorWidgetOfExactType<Provider>()!;
-  }
-
-  @override
-  bool updateShouldNotify(Provider oldWidget) => false;
-}
-
 class ChangeColorBloc {
   final _color = StreamController<Color>.broadcast();
 
@@ -40,11 +21,12 @@ class ChangeColorBloc {
 }
 
 class UpdateCounterBloc {
-  int _count = 1;
+  static int _count = 0;
   final _counter = StreamController<int>.broadcast();
   Stream<int> get counter => _counter.stream;
   void updateCounter() {
-    _counter.add(_count++);
+    _count++;
+    _counter.add(_count);
   }
 
   dispose() {
@@ -57,29 +39,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      changeColor: ChangeColorBloc(),
-      updateCounter: UpdateCounterBloc(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
+  final ChangeColorBloc _changeColor = ChangeColorBloc();
+  final UpdateCounterBloc _updateCounter = UpdateCounterBloc();
 
   @override
   Widget build(BuildContext context) {
-    final ChangeColorBloc _changeColor = Provider.of(context).changeColor;
-    final UpdateCounterBloc _updateCounter = Provider.of(context).updateCounter;
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -92,8 +71,8 @@ class MyHomePage extends StatelessWidget {
               'You have pushed the button this many times:',
             ),
             StreamBuilder<int>(
-                initialData: 0,
                 stream: _updateCounter.counter,
+                initialData: 0,
                 builder: (context, snapshot) {
                   return Text(
                     '${snapshot.data}',
