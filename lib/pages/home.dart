@@ -50,6 +50,7 @@ class HomePage extends StatelessWidget {
                       SizedBox(height: _size.height * 0.05),
                       ColorPicker(
                           pickerAreaBorderRadius: BorderRadius.circular(5),
+                          paletteType: PaletteType.hueWheel,
                           pickerColor: snapshot.data ??
                               Theme.of(context).colorScheme.secondary,
                           onColorChanged: (Color color) {
