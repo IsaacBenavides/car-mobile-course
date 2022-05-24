@@ -1,9 +1,6 @@
-import 'dart:math';
-
-import 'package:car_mobile_course/bloc/change_color_bloc.dart';
-import 'package:car_mobile_course/bloc/change_theme.dart';
-import 'package:car_mobile_course/bloc/provider.dart';
-import 'package:car_mobile_course/widgets/appbar.dart';
+import 'package:car_mobile_course/change_color/bloc/change_color_bloc.dart';
+import 'package:car_mobile_course/change_color/bloc/provider.dart';
+import 'package:car_mobile_course/change_color/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
