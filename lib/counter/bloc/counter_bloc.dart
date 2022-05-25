@@ -1,11 +1,23 @@
 import 'dart:async';
 
 class UpdateCounterBloc {
-  int _count = 1;
+  int _count = 0;
   final _counter = StreamController<int>.broadcast();
   Stream<int> get counter => _counter.stream;
-  void updateCounter() {
-    _counter.add(_count++);
+
+  void incrementCounter() {
+    _count++;
+    _counter.add(_count);
+  }
+
+  void decrementCounter() {
+    _count--;
+    _counter.add(_count);
+  }
+
+  void resetCounter() {
+    _count = 0;
+    _counter.add(_count);
   }
 
   dispose() {

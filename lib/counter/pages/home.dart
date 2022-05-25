@@ -32,10 +32,34 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _counterBloc.updateCounter(),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Row(
+          children: [
+            Expanded(
+              child: FloatingActionButton(
+                heroTag: "decrement",
+                child: const Text('-1'),
+                onPressed: () => _counterBloc.decrementCounter(),
+              ),
+            ),
+            Expanded(
+              child: FloatingActionButton(
+                heroTag: "reset",
+                child: const Text('0'),
+                onPressed: () => _counterBloc.resetCounter(),
+              ),
+            ),
+            Expanded(
+              child: FloatingActionButton(
+                heroTag: "increment",
+                child: const Text('+1'),
+                onPressed: () => _counterBloc.incrementCounter(),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
