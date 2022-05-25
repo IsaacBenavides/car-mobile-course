@@ -1,13 +1,14 @@
 import 'package:car_mobile_course/counter/bloc/counter_bloc.dart';
+import 'package:car_mobile_course/counter/bloc/provider.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
-
-  final UpdateCounterBloc _counterBloc = UpdateCounterBloc();
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final UpdateCounterBloc _counterBloc =
+        Provider.of(context).updateCounterBloc;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Counter'),
@@ -33,34 +34,39 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: Row(
-          children: [
-            Expanded(
-              child: FloatingActionButton(
-                heroTag: "decrement",
-                child: const Text('-1'),
-                onPressed: () => _counterBloc.decrementCounter(),
-              ),
-            ),
-            Expanded(
-              child: FloatingActionButton(
-                heroTag: "reset",
-                child: const Text('0'),
-                onPressed: () => _counterBloc.resetCounter(),
-              ),
-            ),
-            Expanded(
-              child: FloatingActionButton(
-                heroTag: "increment",
-                child: const Text('+1'),
-                onPressed: () => _counterBloc.incrementCounter(),
-              ),
-            ),
-          ],
+      floatingActionButton: const FloatingButtons(),
+    );
+  }
+}
+
+class FloatingButtons extends StatelessWidget {
+  const FloatingButtons({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final UpdateCounterBloc _counterBloc =
+        Provider.of(context).updateCounterBloc;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        FloatingActionButton(
+          heroTag: "decrement",
+          child: const Text('-1'),
+          onPressed: () => _counterBloc.decrementCounter(),
         ),
-      ),
+        FloatingActionButton(
+          heroTag: "reset",
+          child: const Text('0'),
+          onPressed: () => _counterBloc.resetCounter(),
+        ),
+        FloatingActionButton(
+          heroTag: "increment",
+          child: const Text('+1'),
+          onPressed: () => _counterBloc.incrementCounter(),
+        ),
+      ],
     );
   }
 }
