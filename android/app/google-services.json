@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "378580326804",
+    "firebase_url": "https://fir-app-9aa1f-default-rtdb.firebaseio.com",
+    "project_id": "fir-app-9aa1f",
+    "storage_bucket": "fir-app-9aa1f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378580326804:android:b4e86acc6ae247d3335781",
+        "android_client_info": {
+          "package_name": "com.example.car_mobile_course"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378580326804-09qbrqsjlofcmqpbp11fot3jcc5aq7cl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW0jjy7yl05nV9UZ7bZ-si73YIPq94Xic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378580326804-09qbrqsjlofcmqpbp11fot3jcc5aq7cl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "378580326804-7vrtemtvgkb9ip1r8c1h5u4kospfcs27.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebaseApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
