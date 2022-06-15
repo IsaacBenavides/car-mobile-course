@@ -6,7 +6,6 @@ import 'package:car_mobile_course/firebase/src/provider.dart';
 import 'package:car_mobile_course/firebase/src/ui/firebase_ui.dart';
 import 'package:car_mobile_course/firebase/src/ui/routes/routes.dart';
 import 'package:car_mobile_course/firebase_options.dart';
-import 'package:car_mobile_course/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData(
           brightness: Brightness.dark,
         ),
-        home: const SplashScreen(),
+        home: const ListButtons(),
         onGenerateRoute: CustomRoutes.routes,
       ),
     );
