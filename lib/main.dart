@@ -1,12 +1,7 @@
 import 'package:car_mobile_course/change_color/main.dart';
 import 'package:car_mobile_course/colors.dart';
 import 'package:car_mobile_course/counter/main.dart';
-import 'package:car_mobile_course/firebase/src/data/repository.dart';
-import 'package:car_mobile_course/firebase/src/provider.dart';
-import 'package:car_mobile_course/firebase/src/ui/firebase_ui.dart';
-import 'package:car_mobile_course/firebase/src/ui/routes/routes.dart';
 import 'package:car_mobile_course/firebase_options.dart';
-import 'package:car_mobile_course/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -21,21 +16,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      repository: Repository(),
-      child: MaterialApp(
-        title: 'Mobile Course',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: AppColors.primary,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        darkTheme: ThemeData(
-          brightness: Brightness.dark,
-        ),
-        home: const SplashScreen(),
-        onGenerateRoute: CustomRoutes.routes,
+    return MaterialApp(
+      title: 'Mobile Course',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: AppColors.primary,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      home: const ListButtons(),
     );
   }
 }
@@ -64,14 +55,6 @@ class ListButtons extends StatelessWidget {
             actionTap: () => Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => const Counter(),
-              ),
-            ),
-          ),
-          MyMenuButton(
-            title: "Tarea 2 - Firebase",
-            actionTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const FirebaseUi(),
               ),
             ),
           ),
