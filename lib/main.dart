@@ -6,6 +6,7 @@ import 'package:car_mobile_course/firebase/src/provider.dart';
 import 'package:car_mobile_course/firebase/src/ui/firebase_ui.dart';
 import 'package:car_mobile_course/firebase/src/ui/routes/routes.dart';
 import 'package:car_mobile_course/firebase_options.dart';
+import 'package:car_mobile_course/games/pages/page_1.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -63,6 +64,14 @@ class ListButtons extends StatelessWidget {
             actionTap: () => Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => const Counter(),
+              ),
+            ),
+          ),
+          MyMenuButton(
+            title: "Tarea 2 - List Games",
+            actionTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const Page1(),
               ),
             ),
           ),
