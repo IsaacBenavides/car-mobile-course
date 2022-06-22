@@ -1,5 +1,5 @@
-import 'package:car_mobile_course/firebase/src/ui/details.dart';
-import 'package:car_mobile_course/firebase/src/ui/firebase_ui.dart';
+import 'package:car_mobile_course/firebase/src/ui/pages/details.dart';
+import 'package:car_mobile_course/firebase/src/ui/pages/firebase_ui.dart';
 import 'package:car_mobile_course/firebase/src/ui/routes/names.dart';
 import 'package:flutter/material.dart';
 

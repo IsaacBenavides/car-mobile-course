@@ -16,8 +16,9 @@ class Register {
   final String? name;
   final String? lastName;
   final String? license;
-  final String? phone;
+  final int? phone;
   final String? image;
+  final int? id;
 
   Register(
       {this.car,
@@ -26,7 +27,8 @@ class Register {
       this.lastName,
       this.license,
       this.phone,
-      this.image});
+      this.image,
+      this.id});
 
   factory Register.fromJson(Map<dynamic, dynamic>? json) {
     return Register(
@@ -38,8 +40,20 @@ class Register {
       lastName: json != null && json.isNotEmpty ? json['apellido'] : null,
       license: json != null && json.isNotEmpty ? json['licencia'] : null,
       image: json != null && json.isNotEmpty ? json['imagen'] : null,
+      phone: json != null && json.isNotEmpty ? json['cel'] : null,
+      id: json != null && json.isNotEmpty ? json['id'] : null,
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        "Carro": car?.toJson(),
+        "Servicio": service?.toJson(),
+        "apellido": lastName,
+        "cel": phone,
+        "licencia": license,
+        "nombre": name,
+        "id": id,
+      };
 }
 
 class Car {
@@ -57,6 +71,13 @@ class Car {
       plate: json != null && json.isNotEmpty ? json['placa'] : null,
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        "Color": color,
+        "marca": brand,
+        "modelo": model,
+        "placa": plate,
+      };
 }
 
 class Service {
@@ -73,4 +94,10 @@ class Service {
       upholstery: json['tapiceria'],
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        "lavado": wash,
+        "polish": polish,
+        "tapiceria": upholstery,
+      };
 }

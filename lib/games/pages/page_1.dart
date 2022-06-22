@@ -61,25 +61,28 @@ class WidgetInsideModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      primary: false,
-      backgroundColor: const Color.fromARGB(147, 0, 0, 0),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Hero(
-                tag: game.image! + index.toString(),
-                child: Image.network(game.image!)),
-            const SizedBox(height: 20),
-            Text(
-              game.name!,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline3!
-                  .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-          ],
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pop(),
+      child: Scaffold(
+        primary: false,
+        backgroundColor: const Color.fromARGB(147, 0, 0, 0),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Hero(
+                  tag: game.image! + index.toString(),
+                  child: Image.network(game.image!)),
+              const SizedBox(height: 20),
+              Text(
+                game.name!,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline3!
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );

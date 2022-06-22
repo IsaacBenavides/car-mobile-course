@@ -21,7 +21,7 @@ class FirebaseUiController implements Controller<Repository> {
       _result.listen((event) {
         Registers registers = Registers.fromJson(event.snapshot.value as List);
         _registersController.add(registers);
-      });
+      }).onError((e) => _registersController.addError(e));
     } catch (e) {
       _registersController.addError(e);
     }
